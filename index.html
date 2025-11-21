@@ -3,10 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="output.css">
+    <title>Document</title>
 </head>
 <body>
-    <div class=" w-screen h-screen bg-red-500"></div>
+    <div >
+        <div class="text-2xl sm:text-5xl md:text-6xl font-extrabold text-red-600 text-center p-5 sm:p-15 md:p-20"> 
+            <h1>Gestion Des Personnels</h1></div>
+        <div class=" flex justify-between p-20">
+            <div class="border-2 border-[#b9b9b9] p-5 w-[500px] h-fit rounded-[25px]">
+                <input type="search" placeholder=" Search..." class="mb-10 border-2 border-[#b9b9b9] rounded-[25px] w-full">
+                <select class="mb-10 p-1 border-2 border-[#b9b9b9] rounded-[25px] w-full">
+                        <option value="" selected disabled>Chose a Role</option>
+                        <option value="manager">Manager</option>
+                        <option value="technicien_it">Techniciens IT</option>
+                        <option value="agents_de_securite">Agents de sécurité</option>
+                        <option value="receptionniste">Réceptionniste</option>
+                        <option value="nettoyage">Nettoyage</option>
+                        <option value="autre">Autre...</option>
+                </select>
+                
+                <div class="p-6 bg-white rounded-xl shadow-lg flex flex-col gap-[15px]">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-semibold mb-4 text-gray-800">Unassigned Staff</h2>
+                        <button id="addStaffBtn" class="bg-red-500 text-white font-semibold border-[10px] border-red-500 rounded-[10px] active:scale-50 transition-all duration-100"> + Ajouter</button>    
+                    </div>
+  
+                </div>
+
+            </div>
+            <div class="w-[800px] h-[500px] grid grid-cols-13 grid-rows-3 relative">
+                <div id="sall1" class="col-start-1 col-end-6 row-start-1 row-end-2 bg-blue-200 opacity-50 z-50"></div>
+                <div id="sall2" class="col-start-8 col-end-11 row-start-1 row-end-2 bg-red-300 opacity-50 z-50"></div>
+                <div id="sall3" class="col-start-11 col-end-[14] row-start-1 row-end-2 bg-slate-600 opacity-50 z-50"></div>
+                <div id="sall4" class="col-start-1 col-end-6 row-start-2 row-end-4 z-50  bg-green-500 opacity-50"></div>
+                <div id="sall5" class="col-start-8 col-end-11 row-start-3 row-end-4 z-50 bg-red-900 opacity-50"></div>
+                <div id="sall6" class="col-start-11 col-end-[14] row-start-3 row-end-4 z-50 bg-blue-900 opacity-50"></div>
+                <img class="h-[100%] w-[100%] absolute z-0"   src="./plan.jpg" alt="plan">
+            </div>
+
+        </div>
+
+    </div>
+
+    <form id="AddPersn" enctype="multipart/form-data" 
+        class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[60] w-[800px] mx-auto p-6 bg-white border border-gray-300 rounded-2xl shadow-md space-y-4">        
+        <div>
+            <label for="StaffImg" class="block mb-1 font-medium text-gray-700">Upload an image</label>
+            <input type="url" id="StaffImg" accept="image/*" 
+            class="block w-full text-gray-700 border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-red-400">
+        </div>    
+        <div>
+            <label for="name" class="block mb-1 font-medium text-gray-700">Name</label>
+            <input type="text" id="name" placeholder="Entrer le nom de staff" required 
+            class="block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-red-400">
+        </div>
+        <div>
+            <label for="Role" class="block mb-1 font-medium text-gray-700">Role</label>
+            <input type="text" id="Role" placeholder="Entrer le role de staff" required 
+            class="block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-red-400">
+        </div>
+        <div>
+            <label for="phone" class="block mb-1 font-medium text-gray-700">Phone</label>
+            <input type="tel" id="phone" placeholder="Entrer le numero de telephone" required class="block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-red-400">
+        </div>   
+        <div>
+            <label for="email" class="block mb-1 font-medium text-gray-700">E-mail</label>
+            <input type="email" id="email" placeholder="Entrer l'E-mail" required class="block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-red-400">
+        </div>
+        <button id="toExpBtn" type="submit" 
+        class="w-full bg-red-400 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-600 transition-colors">Next➜ </button>
+    </form>
+
+    <form id="experienceForm" class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[60] w-[800px] mx-auto p-6 bg-white border border-gray-300 rounded-2xl shadow-md space-y-4">        
+
+        <div id="experiences"></div>
+        <button type="button" id="addBtn"
+            class="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">
+            + Add New Experience
+        </button>
+        <button type="submit"
+            class="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+            Save All 
+        </button>
+        <button id="backBtn" type="button"
+            class="mt-4 w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600">
+            ← Back 
+        </button>
+
+    </form>
+    <script src="script.js"></script>
+
+
 </body>
 </html>
